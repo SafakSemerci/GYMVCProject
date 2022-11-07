@@ -1,0 +1,14 @@
+﻿@using GYMVCProject.Controllers
+@{
+    ViewData["Title"] = "Index";
+}
+@model List<Product>;
+
+
+ @foreach (var item in Model)
+ {
+     <p> @item.id- @item.Name</p>
+ }
+
+<h1>Ornek Controller Index Sayfası</h1>
+

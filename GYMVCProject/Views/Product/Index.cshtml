@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+@model List<Products>
+
+<h1>Index</h1>
+
+
+    <tr>
+             <th>Ürün Adı:</th>
+             <th>Ürün Fiyatı:</th>
+             <th>Ürün Stock: </th>
+    </tr>
+
+    <tr>
+        @foreach (var item in Model)
+        {
+            <td>@item.Name</td>
+            <td>@item.Price</td>
+            <td>@item.Stock</td>
+        }
+
+    </tr>
+
+
+
+
+
+

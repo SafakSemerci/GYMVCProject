@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewData["Title"] = "Add";
+}
+
+<h1>Add</h1>
+
+
+<form asp-controller="Product" asp-action="SaveProduct" method="post">
+    <label>Ürün İsmi:</label>
+    <input type="text" name="Name" />
+    <br />
+    <label>Ürün Fiyatı:</label>
+    <input type="text" name="Price" />
+    <br />
+    <label>Ürün Stok:</label>
+    <input type="text" name="Stock" />
+    <br />
+
+    <button type="submit">Ürün Kaydet</button>
+
+
+
+</form>
+
