@@ -1,3 +1,4 @@
+using GYMVCProject.Helpers;
 using GYMVCProject.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,8 +13,11 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 });
 
+//IHelper Intefaceni gördüðün yerde Helper Classýný oluþtur.
+builder.Services.AddSingleton<IHelper, Helper>();
 
-
+//Helper Interface'ini scoped olarak inject ettik.
+builder.Services.AddScoped<IHelper, Helper>();
 
 var app = builder.Build();
 

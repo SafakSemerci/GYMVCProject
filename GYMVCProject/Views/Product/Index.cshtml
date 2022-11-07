@@ -5,26 +5,40 @@
 
 @model List<Products>
 
-<h1>Index</h1>
+<h1>Ürünler</h1>
+
+@if (TempData["status"] != null)
+{
+    <div class="alert alert-primary" role="alert">
+        @TempData["status"]
+    </div>
+    
+}
 
 
+<a asp-controller="Product" asp-action="add">Ürün Ekle</a>
+
+<table class="table">
+    <thead>
     <tr>
              <th>Ürün Adı:</th>
              <th>Ürün Fiyatı:</th>
              <th>Ürün Stock: </th>
     </tr>
-
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
     <tr>
-        @foreach (var item in Model)
-        {
             <td>@item.Name</td>
             <td>@item.Price</td>
             <td>@item.Stock</td>
-        }
-
+            <td><a asp-controller="product" asp-action="remove" asp-route-id="@item.Id">Sil</a></td>
+            <td><a asp-controller="product" asp-action="update" asp-route-id="@item.Id">Güncelle</a></td>
     </tr>
-
-
+    }
+    </tbody>
+</table>
 
 
 
