@@ -8,17 +8,52 @@
 @model Products
 
 <form asp-controller="Product" asp-action="Add" method="post">
-    <label>Ürün İsmi:</label>
-    <input type="text" asp-for="Name"/>
-    <br />
-    <label>Ürün Fiyatı:</label>
-    <input type="text" asp-for="Price" />
-    <br />
-    <label>Ürün Stok:</label>
-    <input type="text" asp-for="Stock" />
-    <br />
 
-    <button type="submit">Ürün Kaydet</button>
+    <div class="mb-3">
+        <label for="Name" class="form-label">Ürün İsmi:</label>
+        <input  class="form-control" asp-for="Name">
+    </div>
+
+
+    <div class="mb-3">
+        <label for="Price" class="form-label">Ürün Fiyatı:</label>
+        <input class="form-control" asp-for="Price">
+    </div>
+
+
+    <div class="mb-3">
+        <label for="Stock" class="form-label">Ürün Stok:</label>
+        <input class="form-control" asp-for="Stock">
+    </div>
+
+    <div class="form-check">
+        <input class="form-check-input" asp-for="IsPublish" >
+        <label class="form-check-label" for="flexCheckDefault">
+            Yayınlansın mı?
+        </label>
+
+    </div>
+
+    <div class="mb-3 mt-3">
+        <h4>Ürün Kac Ay Satışta Kalıcak</h4>
+    @foreach (var item in ViewBag.Expire as Dictionary<string,int>)
+    {
+            <div class="form-check">
+                <input class="form-check-input" type="radio" asp-for="Expire" value="@item.Value">
+                <label class="form-check-label" for="flexRadioDefault1">
+                    @item.Key
+                </label>
+            </div>
+
+        }
+
+    </div>
+
+
+
+
+
+    <button type="submit" class="btn btn-primary">Ürün Kaydet</button>
 
 
 

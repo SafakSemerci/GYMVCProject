@@ -7,12 +7,10 @@ namespace GYMVCProject.Controllers
     public class ProductController : Controller
     {
         private AppDbContext _context;
-        private IHelper _helper;
 
-        public ProductController(AppDbContext context, IHelper helper)
+        public ProductController(AppDbContext context)
         {
-            _context = context;
-            _helper = helper;
+            _context = context; 
         }
 
         public IActionResult Index()
@@ -23,6 +21,14 @@ namespace GYMVCProject.Controllers
 
         public IActionResult Add()
         {
+            ViewBag.Expire = new Dictionary<string, int>()
+            {
+                {"1 Ay",1 },
+                {"3 Ay",3 },
+                {"6 Ay",6 },
+                {"12 Ay",12 }
+            };
+
             return View();
         }
 

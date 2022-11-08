@@ -10,5 +10,8 @@ namespace GYMVCProject.Models
         public decimal? Price { get; set; }
         public int? Stock { get; set; }
 
+        public bool IsPublish { get; set; }
+
+        public int Expire { get; set; }
     }
 }

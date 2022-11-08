@@ -24,6 +24,8 @@
              <th>Ürün Adı:</th>
              <th>Ürün Fiyatı:</th>
              <th>Ürün Stock: </th>
+             <th>Yayınlanacak Mı: </th>
+             <th>Sayınlanma Süresi </th>
     </tr>
     </thead>
     <tbody>
@@ -33,6 +35,8 @@
             <td>@item.Name</td>
             <td>@item.Price</td>
             <td>@item.Stock</td>
+            <td>@item.IsPublish</td>
+            <td>@item.Expire Ay</td>
             <td><a asp-controller="product" asp-action="remove" asp-route-id="@item.Id">Sil</a></td>
             <td><a asp-controller="product" asp-action="update" asp-route-id="@item.Id">Güncelle</a></td>
     </tr>
