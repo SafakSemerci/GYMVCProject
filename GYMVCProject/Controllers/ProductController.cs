@@ -1,6 +1,7 @@
 ﻿using GYMVCProject.Helpers;
 using GYMVCProject.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace GYMVCProject.Controllers
 {
@@ -28,6 +29,16 @@ namespace GYMVCProject.Controllers
                 {"6 Ay",6 },
                 {"12 Ay",12 }
             };
+
+            ViewBag.ColorSelect = new SelectList(new List<ColorSelectList>()
+            {
+                new() {Data="Mavi", Value="Mavi"},
+                new() {Data="Kırmızı", Value="Kırmızı"},
+                new() {Data="Sarı", Value="Sarı"},
+
+            },"Value","Data");
+
+
 
             return View();
         }

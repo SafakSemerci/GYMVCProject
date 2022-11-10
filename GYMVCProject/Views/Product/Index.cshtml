@@ -25,7 +25,8 @@
              <th>Ürün Fiyatı:</th>
              <th>Ürün Stock: </th>
              <th>Yayınlanacak Mı: </th>
-             <th>Sayınlanma Süresi </th>
+             <th>Yayınlanma Süresi: </th>
+            <th>Ürün Açıklaması: </th>
     </tr>
     </thead>
     <tbody>
@@ -35,8 +36,21 @@
             <td>@item.Name</td>
             <td>@item.Price</td>
             <td>@item.Stock</td>
-            <td>@item.IsPublish</td>
+            <td>
+                @(item.IsPublish ? "Evet" : "Hayır")
+            </td>
             <td>@item.Expire Ay</td>
+            <td>@if (item.Description.Length>20)
+                {
+                    @item.Description.Substring(0,20) <text>...</text>
+                    
+                }
+                else
+                {
+                     @item.Description
+                }
+
+            </td>
             <td><a asp-controller="product" asp-action="remove" asp-route-id="@item.Id">Sil</a></td>
             <td><a asp-controller="product" asp-action="update" asp-route-id="@item.Id">Güncelle</a></td>
     </tr>
