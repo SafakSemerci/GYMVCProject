@@ -1,6 +1,7 @@
 using GYMVCProject.Helpers;
 using GYMVCProject.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +19,7 @@ builder.Services.AddSingleton<IHelper, Helper>();
 
 //Helper Interface'ini scoped olarak inject ettik.
 builder.Services.AddScoped<IHelper, Helper>();
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 var app = builder.Build();
 

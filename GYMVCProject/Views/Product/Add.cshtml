@@ -5,25 +5,45 @@
 
 <h1>Add</h1>
 
-@model Products
+@model ProductViewModel
+
+
+<div asp-validation-summary="ModelOnly">
+</div>
 
 <form asp-controller="Product" asp-action="Add" method="post">
 
     <div class="mb-3">
         <label asp-for="Name" class="form-label">Ürün İsmi:</label>
         <input  class="form-control" asp-for="Name">
+        <span class="text-danger" asp-validation-for="Name"></span>
     </div>
 
 
     <div class="mb-3">
         <label asp-for="Price" class="form-label">Ürün Fiyatı:</label>
         <input class="form-control" asp-for="Price">
+        <span class="text-danger" asp-validation-for="Price"></span>
     </div>
 
 
     <div class="mb-3">
         <label asp-for="Stock" class="form-label">Ürün Stok:</label>
-        <input class="form-control" asp-for="Stock">
+        <input type="number" class="form-control" asp-for="Stock">
+        <span class="text-danger" asp-validation-for="Stock"></span>
+
+    </div>
+
+
+    <div class="mb-3">
+ @*       <label asp-for="Color" class="form-label">Ürün Renk:</label>
+        <input class="form-control" asp-for="Color">*@
+
+
+        <select class="form-select" asp-for="Color" asp-items="@ViewBag.ColorSelect">
+            <option value="">Renk Seçiniz.</option>
+        </select>
+        <span class="text-danger" asp-validation-for="Color"></span>
     </div>
 
     <div class="form-check">
@@ -44,7 +64,7 @@
                     @item.Key
                 </label>
             </div>
-
+            <span class="text-danger" asp-validation-for="Expire"></span>
     }
 
     </div>
@@ -52,6 +72,13 @@
     <div class="form-floating mb-3">
         <textarea asp-for="Description" class="form-control" placeholder="Ürün Açıklama" id="floatingTextarea"></textarea>
         <label asp-for="Description">Ürün Açıklaması</label>
+        <span class="text-danger" asp-validation-for="Description"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="PublishDate" class="form-label">Yayınlanma Tarihi:</label>
+        <input class="form-control" asp-for="PublishDate">
+        <span class="text-danger" asp-validation-for="PublishDate"></span>
     </div>
 
     <button type="submit" class="btn btn-primary">Ürün Kaydet</button>
@@ -60,3 +87,9 @@
 
 </form>
 
+    @section Scripts
+    {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+    }

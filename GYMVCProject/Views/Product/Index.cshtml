@@ -3,7 +3,7 @@
     ViewData["Title"] = "Index";
 }
 
-@model List<Products>
+@model List<ProductViewModel>
 
 <h1>Ürünler</h1>
 
@@ -24,9 +24,11 @@
              <th>Ürün Adı:</th>
              <th>Ürün Fiyatı:</th>
              <th>Ürün Stock: </th>
+             <th>Ürün Renk: </th>
              <th>Yayınlanacak Mı: </th>
-             <th>Yayınlanma Süresi: </th>
-            <th>Ürün Açıklaması: </th>
+            <th>Yayınlanma Süresi: </th>
+            <th>Yayınlanma Tarihi: </th>
+             <th>Ürün Açıklaması: </th>
     </tr>
     </thead>
     <tbody>
@@ -36,10 +38,12 @@
             <td>@item.Name</td>
             <td>@item.Price</td>
             <td>@item.Stock</td>
+            <td>@item.Color</td>
             <td>
                 @(item.IsPublish ? "Evet" : "Hayır")
             </td>
             <td>@item.Expire Ay</td>
+            <td>@item.PublishDate</td>
             <td>@if (item.Description.Length>20)
                 {
                     @item.Description.Substring(0,20) <text>...</text>
