@@ -12,5 +12,7 @@ namespace GYMVCProject.Models
 
         public DbSet<Products> Products { get; set; }
 
+        public DbSet<Visitor> Visitors { get; set; }
+
     }
 }

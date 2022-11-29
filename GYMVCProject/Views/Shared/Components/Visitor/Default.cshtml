@@ -1,0 +1,16 @@
+﻿@model VisitorViewModel
+
+<form>
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label">Name</label>
+        <input class="form-control" asp-for="Name">
+    </div>
+
+      <div class="form-floating mb-3">
+        <textarea asp-for="Comment" class="form-control" placeholder="Yorum" id="floatingTextarea"></textarea>
+        <label asp-for="Comment">Yorum</label>
+    </div>
+  
+
+    <button type="submit" class="btn btn-primary">Kaydet.</button>
+</form>
