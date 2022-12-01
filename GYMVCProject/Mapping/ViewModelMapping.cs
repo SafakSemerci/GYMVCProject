@@ -10,6 +10,7 @@ namespace GYMVCProject.Mapping
         {
 
             CreateMap<Products, ProductViewModel>().ReverseMap();
+            CreateMap<Visitor, VisitorViewModel>().ReverseMap();
 
         }
     }

@@ -1,4 +1,5 @@
-﻿using GYMVCProject.Models;
+﻿using AutoMapper;
+using GYMVCProject.Models;
 using GYMVCProject.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -9,12 +10,14 @@ namespace GYMVCProject.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly AppDbContext _appDbContext;
+        private readonly IMapper _mapper;
 
 
-        public HomeController(ILogger<HomeController> logger, AppDbContext appDbContext)
+        public HomeController(ILogger<HomeController> logger, AppDbContext appDbContext, IMapper mapper = null)
         {
             _logger = logger;
             _appDbContext = appDbContext;
+            _mapper = mapper;
         }
 
         public IActionResult Index()
@@ -63,6 +66,34 @@ namespace GYMVCProject.Controllers
         public IActionResult Visitor()
         {
             return View();
+        }
+
+
+        [HttpPost]
+        public IActionResult SaveVisitorComment(VisitorViewModel visitorViewModel)        
+        {
+            try
+            {
+                var visitor = _mapper.Map<Visitor>(visitorViewModel);
+                visitor.CreatedDate = DateTime.Now;
+                _appDbContext.Visitors.Add(visitor);
+                _appDbContext.SaveChanges();
+
+                TempData["result"] = "Yorum Kayıt Edilmiştir.";
+
+                return RedirectToAction(nameof(HomeController.Visitor));
+            }
+            catch (Exception)
+            {
+                TempData["result"] = "Yorum kaydedilirken bir hata meydana geldi.";
+                return RedirectToAction(nameof(HomeController.Visitor));
+            }
+
+
+
+       
+
+
         }
 
 
